@@ -2,80 +2,82 @@ package Logic;
 
 import java.util.ArrayList;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-/**
- *
- * @author alija
- */
+public class GymSystem {
+    private static ArrayList<Member> members = new ArrayList<>();
+    private static ArrayList<Employee> employees = new ArrayList<>();
 
-public class GymSystem{
-     public static ArrayList<Member> members = new ArrayList<Member>();
-     public static ArrayList<Employee> employees = new ArrayList<Employee>();
-    
-    //Manging the members
     public static boolean addMember(Member member) {
-
-        return true;
+        return members.add(member);
     }
 
     public static boolean editMember(Member member) {
+        int index = members.indexOf(member);
 
-        return true;
+        if (index != -1) {
+            members.set(index, member);
+            return true;
+        }
+
+        return false;
     }
 
     public static boolean removeMember(Member member) {
-
-        return true;
+        return members.remove(member);
     }
-    
-    //Mangaing the employees
-    public static boolean addEmployee(Employee employee) {
 
-        return true;
+    public static boolean addEmployee(Employee employee) {
+        return employees.add(employee);
     }
 
     public static boolean editEmployee(Employee employee) {
+        int index = employees.indexOf(employee);
 
-        return true;
+        if (index != -1) {
+            employees.set(index, employee);
+            return true;
+        }
+
+        return false;
     }
 
     public static boolean removeEmployee(Employee employee) {
-
-        return true;
+        return employees.remove(employee);
     }
-    
-    //Manging the gym
+
     public static boolean assignMemberToTrainer(Member member, PersonalTrainer trainer) {
+        if (!trainer.getMembers().contains(member)) {
+            trainer.getMembers().add(member);
+            return true;
+        }
 
-        return true;
+        return false;
     }
+
     public static boolean removeMemberFromTrainer(Member member, PersonalTrainer trainer) {
-
-        return true;
+        return trainer.getMembers().remove(member);
     }
-    
-    //Data Manuplation
+
     public static ArrayList<Member> getMembersByTrainer(PersonalTrainer trainer) {
-        ArrayList<Member> trainerMemberList = new ArrayList<Member>();
-        
+        ArrayList<Member> trainerMemberList = new ArrayList<>();
+
+        for (Member member : members) {
+            if (trainer.getMembers().contains(member)) {
+                trainerMemberList.add(member);
+            }
+        }
+
         return trainerMemberList;
     }
-    
+
     public static void generateMarketingReport() {
-
     }
-    
+
     public static void loadInitialData() {
-
     }
-    
+
     public static void saveData() {
-
     }
-    public static void exitProgram() {
 
+    public static void exitProgram() {
     }
 }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Logic;
 
 import java.io.BufferedReader;
@@ -10,13 +6,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
 
-/**
- *
- * @author alija
- */
 public class Member implements Serializable {
-
     private static final long serialVersionUID = 2L;
+    private static int totalMember;
     private int id;
     private String firstName;
     private String lastName;
@@ -24,10 +16,8 @@ public class Member implements Serializable {
     private String phone;
     private String gender;
     private String birthDate;
-    static int totalMember;
 
     public Member() {
-
     }
 
     public Member(String firstName, String lastName, String address, String phone, String gender, String birthDate) {
@@ -41,7 +31,7 @@ public class Member implements Serializable {
         totalMember++;
     }
 
-    //Getters and setter (Auto generated)
+    // Getters and setters
     public int getId() {
         return id;
     }
@@ -50,7 +40,6 @@ public class Member implements Serializable {
         this.id = id;
     }
 
-    //Full Name implementation
     public String getFullName() {
         return getFirstName() + " " + getLastName();
     }
@@ -103,24 +92,24 @@ public class Member implements Serializable {
         this.birthDate = birthDate;
     }
 
-    public static void saveEmpCount() {
+    public static void saveMemberCount() {
         try {
             FileWriter fw = new FileWriter("src/FileManager/Data/memberCount.txt");
             fw.write(String.valueOf(totalMember));
             fw.close();
         } catch (IOException e) {
-            System.out.println("Error occured: " + e.getMessage());
+            System.out.println("Error occurred: " + e.getMessage());
         }
     }
 
-    public static void loadEmpCount() {
+    public static void loadMemberCount() {
         try {
             BufferedReader br = new BufferedReader(new FileReader("src/FileManager/Data/memberCount.txt"));
             totalMember = Integer.parseInt(br.readLine());
             br.close();
         } catch (IOException e) {
             totalMember = 1;
-            System.out.println("Error occured: " + e.getMessage());
+            System.out.println("Error occurred: " + e.getMessage());
         }
     }
 }
