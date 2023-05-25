@@ -1,13 +1,27 @@
 package Logic;
 
+import FileManager.FileManager;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class GymSystem {
-    private static ArrayList<Member> members = new ArrayList<>();
-    private static ArrayList<Employee> employees = new ArrayList<>();
-
+    public static ArrayList<Member> members = new ArrayList<>();
+    public static ArrayList<Employee> employees = new ArrayList<>();
+    
     public static boolean addMember(Member member) {
         return members.add(member);
+    }
+       public static void initializeSystem() {
+        try {
+            FileManager.getInstance().ReadEmployees();
+            FileManager.getInstance().ReadMembers();
+            Employee.loadEmpCount();
+            Member.loadEmpCount();
+            FileManager.getInstance().loadStartupFile();
+        } catch (IOException | ClassNotFoundException e) {
+            // Handle exceptions here or throw them further
+            e.printStackTrace();
+        }
     }
 
     public static boolean editMember(Member member) {

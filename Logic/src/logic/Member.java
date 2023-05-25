@@ -9,6 +9,10 @@ import java.io.Serializable;
 public class Member implements Serializable {
     private static final long serialVersionUID = 2L;
     private static int totalMember;
+
+    static void loadEmpCount() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     private int id;
     private String firstName;
     private String lastName;
