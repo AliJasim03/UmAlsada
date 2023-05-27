@@ -39,10 +39,6 @@ public class GymSystem {
         return members.remove(member);
     }
 
-    public static boolean addEmployee(Employee employee) {
-        return employees.add(employee);
-    }
-
     public static boolean editEmployee(Employee employee) {
         int index = employees.indexOf(employee);
 

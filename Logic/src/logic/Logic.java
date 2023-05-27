@@ -4,6 +4,8 @@
  */
 package logic;
 
+import raven.main.MainFrame;
+
 /**
  *
  * @author yoyoj
@@ -14,7 +16,9 @@ public class Logic {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        MainFrame frame = new MainFrame();
+        // set the initially invisible testingFrameCodes to // visible - also from the Component class
+        frame.setVisible(true); 
     }
     
 }

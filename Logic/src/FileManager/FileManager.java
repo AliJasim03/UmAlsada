@@ -38,23 +38,8 @@ public class FileManager {
         return instance;
     }
 
-//    File path = new File("src/FileManager/");
-    public void ReadFile(File fileToRead) {
-        Object content = null;
-        try {
-            Scanner inFile = new Scanner(fileToRead);
-            while (inFile.hasNextLine()) {
-                String nxtLine = inFile.nextLine();
-                //content = content + nxtLine + "\n";
-                System.out.println(content);
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("Error occured: " + e.getMessage());
-        }
-    }
-
     public void WriteEmployee() throws IOException {
-        try (FileOutputStream fileOut = new FileOutputStream("src/FileManager/Data/Employees.dat")) {
+        try (FileOutputStream fileOut = new FileOutputStream("src/Data/Employees.dat")) {
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(GymSystem.employees); // serializes​
         } catch (FileNotFoundException e) {
@@ -64,7 +49,7 @@ public class FileManager {
 
     public void ReadEmployees() throws IOException, ClassNotFoundException {
         try {
-            FileInputStream fileIn = new FileInputStream("src/FileManager/Data/Employees.dat");
+            FileInputStream fileIn = new FileInputStream("src/Data/Employees.dat");
             ObjectInputStream in = new ObjectInputStream(fileIn);
 // de-serialize:​
             GymSystem.employees = (ArrayList<Employee>) in.readObject();
@@ -74,7 +59,7 @@ public class FileManager {
     }
 
     public void WriteMember() throws IOException {
-        try (FileOutputStream fileOut = new FileOutputStream("src/FileManager/Data/Members.dat")) {
+        try (FileOutputStream fileOut = new FileOutputStream("src/Data/Members.dat")) {
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(GymSystem.members); // serializes​
         } catch (FileNotFoundException e) {
@@ -84,27 +69,12 @@ public class FileManager {
 
     public void ReadMembers() throws IOException, ClassNotFoundException {
         try {
-            FileInputStream fileIn = new FileInputStream("src/FileManager/Data/Members.dat");
+            FileInputStream fileIn = new FileInputStream("src/Data/Members.dat");
             ObjectInputStream in = new ObjectInputStream(fileIn);
 // de-serialize:​
             GymSystem.members = (ArrayList<Member>) in.readObject();
         } catch (FileNotFoundException e) {
             System.out.println("Error occured: " + e.getMessage());
-        }
-    }
-
-    public void WriteFile(File fileToWrite, String content) {
-        try {
-            PrintWriter writer;
-            writer = new PrintWriter(new FileOutputStream(
-                    fileToWrite,
-                    true /* append = true */));
-            writer.write(content);
-            writer.println();
-            writer.close();
-            System.out.println("Have been written succefully!");
-        } catch (FileNotFoundException e) {
-            System.out.println("Error ouccred");
         }
     }
 
