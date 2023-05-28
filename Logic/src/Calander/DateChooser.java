@@ -12,20 +12,19 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 public final class DateChooser extends javax.swing.JPanel {
 
-    public JTextField getTextRefernce() {
-        return textRefernce;
+    public TextField getTextRefernce() {
+        return (TextField) textRefernce;
     }
 
     public void addEventDateChooser(EventDateChooser event) {
         events.add(event);
     }
 
-    private JTextField textRefernce;
+    private TextField textRefernce;
     private final String MONTH_ENGLISH[] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
     private String dateFormat = "dd-MM-yyyy";
     private int MONTH = 1;

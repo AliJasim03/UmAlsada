@@ -23,6 +23,7 @@ public class MainFrame extends javax.swing.JFrame {
     DashBaord dashBaord = new DashBaord();
     AddEmployeePnl addEmployeePnl = new AddEmployeePnl();
     AddMemberPnl addMemberPnl = new AddMemberPnl();
+
     public MainFrame() {
         initComponents();
         Employee.loadEmpCount();
@@ -33,15 +34,13 @@ public class MainFrame extends javax.swing.JFrame {
         menu.setEvent(new MenuEvent() {
             @Override
             public void selected(int index, int subIndex) {
-                System.out.println(index+""+subIndex);
+                System.out.println(index + "" + subIndex);
                 if (index == 0) {
                     showForm(dashBaord);
-                } else if(index == 1 && subIndex == 1) {
+                } else if (index == 1 && subIndex == 1) {
                     showForm(addEmployeePnl);
-                }
-else if(index == 2 && subIndex == 1){
+                } else if (index == 2 && subIndex == 1) {
                     showForm(addMemberPnl);
-                        
                 }
             }
         });
