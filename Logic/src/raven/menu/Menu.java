@@ -29,7 +29,7 @@ public class Menu extends JComponent {
     private String[][] menuItems = new String[][]{
         {"Dashboard"},
         {"Employee", "Add employee", "Manage employee", "List personal trainer"},
-        {"Member", "Mdd member", "Manage member", "Assign personal trainer"},
+        {"Member", "Add member", "Manage member", "Assign personal trainer"},
         {"Marketing report"},};
 
     public Menu() {

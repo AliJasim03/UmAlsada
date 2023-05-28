@@ -38,10 +38,11 @@ public class MainFrame extends javax.swing.JFrame {
                     showForm(dashBaord);
                 } else if(index == 1 && subIndex == 1) {
                     showForm(addEmployeePnl);
-                }else if(index == 2 && subIndex == 1){
-                    showForm(addMemberPnl);
                 }
-
+else if(index == 2 && subIndex == 1){
+                    showForm(addMemberPnl);
+                        
+                }
             }
         });
     }

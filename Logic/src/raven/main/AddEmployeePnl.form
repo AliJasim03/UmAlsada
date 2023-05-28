@@ -50,14 +50,12 @@
               </Group>
               <EmptySpace pref="88" max="32767" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="textField1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="addEmpBtn" min="-2" pref="70" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="textField1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="addEmpBtn" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -93,12 +91,9 @@
               </Group>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="txtAddressEmp" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="regularEmpBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="personalTrainerEmpBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="regularEmpBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="personalTrainerEmpBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
