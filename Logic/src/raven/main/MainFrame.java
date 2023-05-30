@@ -10,6 +10,10 @@ import Logic.Member;
 import component.DefaultForm;
 import java.awt.Component;
 import raven.menu.MenuEvent;
+import FileManager.FileManager;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,11 +27,20 @@ public class MainFrame extends javax.swing.JFrame {
     DashBaord dashBaord = new DashBaord();
     AddEmployeePnl addEmployeePnl = new AddEmployeePnl();
     AddMemberPnl addMemberPnl = new AddMemberPnl();
+    AssignTrainerPnl assignTrainerPnl = new AssignTrainerPnl();
+    ManageEmployeesPnl manageEmployeesPnl = new ManageEmployeesPnl();
+    ManageMembersPnl manageMembersPnl = new ManageMembersPnl();
 
-    public MainFrame() {
+    public MainFrame() throws IOException, ClassNotFoundException {
         initComponents();
         Employee.loadEmpCount();
         Member.loadMemberCount();
+        try {
+            FileManager.getInstance().ReadEmployees();
+            FileManager.getInstance().ReadMembers();
+        } catch (Exception e) {
+            System.out.println(e.getLocalizedMessage());
+        }
         GlassPanePopup.install(this);
         showForm(dashBaord);
 
@@ -39,8 +52,16 @@ public class MainFrame extends javax.swing.JFrame {
                     showForm(dashBaord);
                 } else if (index == 1 && subIndex == 1) {
                     showForm(addEmployeePnl);
+                } else if (index == 1 && subIndex == 2) {
+                    manageEmployeesPnl.showData();
+                    showForm(manageEmployeesPnl);
                 } else if (index == 2 && subIndex == 1) {
                     showForm(addMemberPnl);
+                } else if (index == 2 && subIndex == 2) {
+                    manageMembersPnl.showData();
+                    showForm(manageMembersPnl);
+                } else if (index == 2 && subIndex == 3) {
+                    showForm(assignTrainerPnl);
                 }
             }
         });
@@ -151,13 +172,19 @@ public class MainFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainFrame().setVisible(true);
+                try {
+                    new MainFrame().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel body;
+    public static javax.swing.JPanel body;
     private javax.swing.JPanel header;
     private javax.swing.JPanel jPanel1;
     private raven.menu.Menu menu;

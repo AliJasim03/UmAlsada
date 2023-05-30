@@ -16,6 +16,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import FileManager.FileManager;
 import Logic.Member;
+import Logic.PolytechnicStaff;
+import Logic.PolytechnicStudent;
 import javax.swing.JFrame;
 
 /**
@@ -23,9 +25,9 @@ import javax.swing.JFrame;
  * @author alija
  */
 public class AddMemberPnl extends javax.swing.JPanel {
-    
+
     Message obj = new Message();
-    
+
     public AddMemberPnl() {
         initComponents();
         showExtraData();
@@ -36,7 +38,7 @@ public class AddMemberPnl extends javax.swing.JPanel {
             }
         });
         dateChooserAddMem.setTextRefernce(txtDm);
-            dateChooserAddMem.addEventDateChooser(new EventDateChooser() {
+        dateChooserAddMem.addEventDateChooser(new EventDateChooser() {
             @Override
             public void dateSelected(SelectedAction action, SelectedDate date) {
                 if (action.getAction() == SelectedAction.DAY_SELECTED) {
@@ -44,7 +46,7 @@ public class AddMemberPnl extends javax.swing.JPanel {
                 }
             }
         });
-            
+
     }
 
     /**
@@ -339,7 +341,7 @@ public class AddMemberPnl extends javax.swing.JPanel {
     }//GEN-LAST:event_maleRadioButtonActionPerformed
 
     private void addMemBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemBtnActionPerformed
-        String gender = "";
+        String gender = null;
         if (maleRadioButton.isSelected()) {
             gender = "Male";
         } else if (femaleRadioButton.isSelected()) {
@@ -348,24 +350,28 @@ public class AddMemberPnl extends javax.swing.JPanel {
         try {
             if (student.isSelected()) {
                 ///lablablab the one for the show and remove
-                Member m = new Member(txtFm.getText(), txtLm.getText(), txtAm.getText(), txtPhon.getText(), gender, txtDm.getText());
+                Member m = new PolytechnicStudent(txtFm.getText(), txtLm.getText(), txtAm.getText(), txtPhon.getText(), gender,
+                        txtDm.getText(), txtPositionOrMajor.getText(), txtDepartmentOrTeam.getText());
                 GymSystem.members.add(m);
-                obj.jLabel1.setText("A new Member has been added");
-                GlassPanePopup.showPopup(obj);
-            }
-            if (staff.isSelected()) {
+            } else if (staff.isSelected()) {
                 //// same lalalalalalal for show and remove
-                Member m = new Member(txtFm.getText(), txtLm.getText(), txtAm.getText(), txtPhon.getText(), gender, txtDm.getText());
+                Member m = new PolytechnicStaff(txtFm.getText(), txtLm.getText(), txtAm.getText(), txtPhon.getText(), gender,
+                        txtDm.getText(), txtPositionOrMajor.getText(), txtDepartmentOrTeam.getText());
                 GymSystem.members.add(m);
-                obj.jLabel1.setText("A new Member has been added");
-                GlassPanePopup.showPopup(obj);
+
             }
+            obj.jLabel1.setText("A new Member has been added");
+            GlassPanePopup.showPopup(obj);
             txtFm.setText("");
             txtLm.setText("");
             txtAm.setText("");
             txtPhon.setText("");
             txtDm.setText("");
+            txtPositionOrMajor.setText("");
+            txtDepartmentOrTeam.setText("");
             RadioButtonGender.clearSelection();
+            RadioButtonMember.clearSelection();
+            showExtraData();
             FileManager.getInstance().WriteMember();
         } catch (Exception e) {
             obj.jLabel1.setText("Please check your input data");
@@ -379,8 +385,8 @@ public class AddMemberPnl extends javax.swing.JPanel {
         if (student.isSelected()) {
             lblPositionOrMajor.setText("Major");
             lblDepartmenOrTeam.setText("Sport Team");
-            
-        }       
+
+        }
             }//GEN-LAST:event_studentActionPerformed
 
     private void staffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffActionPerformed
@@ -388,12 +394,12 @@ public class AddMemberPnl extends javax.swing.JPanel {
         if (staff.isSelected()) {
             lblPositionOrMajor.setText("Position");
             lblDepartmenOrTeam.setText("Department");
-            
+
         }
     }//GEN-LAST:event_staffActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-dateChooserAddMem.showPopup();
+        dateChooserAddMem.showPopup();
     }//GEN-LAST:event_button1ActionPerformed
 
 

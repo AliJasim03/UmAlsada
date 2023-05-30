@@ -62,6 +62,9 @@
       </Layout>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="body">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
         </Container>

@@ -4,6 +4,7 @@
  */
 package logic;
 
+import java.io.IOException;
 import raven.main.MainFrame;
 
 /**
@@ -15,10 +16,15 @@ public class Logic {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        MainFrame frame = new MainFrame();
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        try {
+            MainFrame frame = new MainFrame();
+                    frame.setVisible(true);
+
+        }catch(Exception e){
+            System.out.println(e.getLocalizedMessage());
+        }
         // set the initially invisible testingFrameCodes to // visible - also from the Component class
-        frame.setVisible(true); 
     }
-    
+
 }
