@@ -56,7 +56,6 @@ public class MainFrame extends javax.swing.JFrame {
                     manageEmployeesPnl.showData();
                     showForm(manageEmployeesPnl);
                 } else if (index == 1 && subIndex == 4) {
-                
                     showForm(listPersonalTrainerPnl);
                 } else if (index == 2 && subIndex == 1) {
                     showForm(addMemberPnl);
@@ -64,6 +63,8 @@ public class MainFrame extends javax.swing.JFrame {
                     manageMembersPnl.showData();
                     showForm(manageMembersPnl);
                 } else if (index == 2 && subIndex == 3) {
+                    assignTrainerPnl.updateComboBox();
+                    assignTrainerPnl.updateTable();
                     showForm(assignTrainerPnl);
                 }
             }
