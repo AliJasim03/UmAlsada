@@ -224,6 +224,7 @@ public class EditEmployeePnl extends javax.swing.JPanel {
             manageEmployeesPnl.showData();
             obj.jLabel1.setText("Data has been updated");
             GlassPanePopup.showPopup(obj);
+              Message obj = new Message();
             obj.eventOK(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
@@ -234,7 +235,7 @@ public class EditEmployeePnl extends javax.swing.JPanel {
                     MainFrame.body.revalidate();
                 }
             });
-            FileManager.getInstance().WriteEmployee();
+            FileManager.getInstance().writeEmployee();
         } catch (Exception e) {
             obj.jLabel1.setText("Please check your input text fields");
             GlassPanePopup.showPopup(obj);

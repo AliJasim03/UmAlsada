@@ -28,6 +28,7 @@ public class MainFrame extends javax.swing.JFrame {
     AddEmployeePnl addEmployeePnl = new AddEmployeePnl();
     AddMemberPnl addMemberPnl = new AddMemberPnl();
     AssignTrainerPnl assignTrainerPnl = new AssignTrainerPnl();
+    ListPersonalTrainerPnl listPersonalTrainerPnl = new ListPersonalTrainerPnl();
     ManageEmployeesPnl manageEmployeesPnl = new ManageEmployeesPnl();
     ManageMembersPnl manageMembersPnl = new ManageMembersPnl();
 
@@ -36,8 +37,7 @@ public class MainFrame extends javax.swing.JFrame {
         Employee.loadEmpCount();
         Member.loadMemberCount();
         try {
-            FileManager.getInstance().ReadEmployees();
-            FileManager.getInstance().ReadMembers();
+            FileManager.getInstance().loadStartupFile();
         } catch (Exception e) {
             System.out.println(e.getLocalizedMessage());
         }
@@ -55,6 +55,9 @@ public class MainFrame extends javax.swing.JFrame {
                 } else if (index == 1 && subIndex == 2) {
                     manageEmployeesPnl.showData();
                     showForm(manageEmployeesPnl);
+                } else if (index == 1 && subIndex == 4) {
+                
+                    showForm(listPersonalTrainerPnl);
                 } else if (index == 2 && subIndex == 1) {
                     showForm(addMemberPnl);
                 } else if (index == 2 && subIndex == 2) {

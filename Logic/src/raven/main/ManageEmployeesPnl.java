@@ -131,7 +131,7 @@ public class ManageEmployeesPnl extends javax.swing.JPanel {
             GymSystem.employees.remove(employeesTable.getSelectedRow());
 
             try {
-                FileManager.getInstance().WriteEmployee();
+                FileManager.getInstance().writeEmployee();
             } catch (IOException ex) {
                 Logger.getLogger(ManageEmployeesPnl.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -153,6 +153,9 @@ public class ManageEmployeesPnl extends javax.swing.JPanel {
             editEmployeePnl.showData();
             MainFrame.body.repaint();
             MainFrame.body.revalidate();
+        } else {
+            obj.jLabel1.setText("Please Select an employee to edit");
+            GlassPanePopup.showPopup(obj);
         }
     }//GEN-LAST:event_editBtnActionPerformed
 

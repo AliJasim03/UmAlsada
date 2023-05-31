@@ -6,6 +6,7 @@ package FileManager;
 
 import Logic.*;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -15,6 +16,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -38,7 +44,7 @@ public class FileManager {
         return instance;
     }
 
-    public void WriteEmployee() throws IOException {
+    public void writeEmployee() throws IOException {
         try (FileOutputStream fileOut = new FileOutputStream("src/Data/Employees.dat")) {
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(GymSystem.employees); // serializes​
@@ -47,7 +53,7 @@ public class FileManager {
         }
     }
 
-    public void ReadEmployees() throws IOException, ClassNotFoundException {
+    public void readEmployees() throws IOException, ClassNotFoundException {
         try {
             FileInputStream fileIn = new FileInputStream("src/Data/Employees.dat");
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -58,7 +64,7 @@ public class FileManager {
         }
     }
 
-    public void WriteMember() throws IOException {
+    public void writeMember() throws IOException {
         try (FileOutputStream fileOut = new FileOutputStream("src/Data/Members.dat")) {
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(GymSystem.members); // serializes​
@@ -67,7 +73,7 @@ public class FileManager {
         }
     }
 
-    public void ReadMembers() throws IOException, ClassNotFoundException {
+    public void readMembers() throws IOException, ClassNotFoundException {
         try {
             FileInputStream fileIn = new FileInputStream("src/Data/Members.dat");
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -78,116 +84,129 @@ public class FileManager {
         }
     }
 
-    public void loadStartupFile() throws FileNotFoundException, IOException, ClassNotFoundException {
-        File serializedFile = new File("src/FileManager/Data/serializedData.ser");
-        if (serializedFile.exists()) {
-//            // deserialize the data and use it to populate the system
-//            FileInputStream fis = new FileInputStream(serializedFile);
-//            ObjectInputStream ois = new ObjectInputStream(fis);
-//            GymSystem.employees = (ArrayList<Employee>) ois.readObject();
-//            GymSystem.members = (ArrayList<Member>) ois.readObject();
-//            ois.close();
-//            fis.close();
+      public void loadStartupFile() throws FileNotFoundException, IOException, ClassNotFoundException {
+        File memberFile = new File("src/Data/Members.dat");
+        File employeeFile = new File("src/Data/Employees.dat");
+        if (employeeFile.exists() || memberFile.exists()) {
+            readMembers();
+            readEmployees();
         } else {
             // load the startup file and use it to populate the system
-            int totalEmployees;
-            String employe;
-            String firstName;
-            String lastName;
-            String address;
-            String phone;
-            double salary;
-            String gender;
-            String birthDate;
-            String position;
-            String department;
-            String course;
-            String team;
-            int totalMembers;
-            int number = 0;
-            Employee employee = null;
-            Member member = null;
-
-            File startupFile = new File("src/FileManager/Data/startup.txt");
+            File startupFile = new File("src/Data/startup.txt");
             Scanner scan = new Scanner(startupFile);
-            totalEmployees = scan.nextInt();
+            int totalEmployees = scan.nextInt();
             scan.nextLine(); // skip the newline character after the number of employees
-            while (scan.hasNext()) {
-                employe = scan.nextLine();
+            for (int i = 0; i < totalEmployees; i++) {
+                String employe = scan.nextLine();
                 if (employe.equalsIgnoreCase("E")) {
-                    firstName = scan.nextLine();
-                    lastName = scan.nextLine();
-                    address = scan.nextLine();
-                    phone = scan.nextLine();
-                    salary = scan.nextDouble();
-                    employee = new Employee(firstName, lastName, address, phone, salary);
+                    String firstName = scan.nextLine();
+                    String lastName = scan.nextLine();
+                    String address = scan.nextLine();
+                    String phone = scan.nextLine();
+                    double salary = scan.nextDouble();
+                    scan.nextLine();
+                    Employee employee = new Employee(firstName, lastName, address, phone, salary);
                     GymSystem.employees.add(employee);
                 } else if (employe.equalsIgnoreCase("PT")) {
-                    firstName = scan.nextLine();
-                    lastName = scan.nextLine();
-                    address = scan.nextLine();
-                    phone = scan.nextLine();
-                    salary = scan.nextDouble();
-
-                    // check if a personal trainer with the same details already exists
-                    boolean trainerExists = false;
-                    for (Employee emp : GymSystem.employees) {
-                        if (emp instanceof PersonalTrainer && emp.getFirstName().equalsIgnoreCase(firstName)
-                                && emp.getLastName().equalsIgnoreCase(lastName) && emp.getAddress().equalsIgnoreCase(address)
-                                && emp.getPhone().equalsIgnoreCase(phone) && emp.getSalary() == salary) {
-                            trainerExists = true;
-                            employee = emp;
-                            break;
-                        }
-                    }
-
-                    if (!trainerExists) {
-                        employee = new PersonalTrainer(firstName, lastName, address, phone, salary);
-                        GymSystem.employees.add(employee);
-                    }
-
-                    totalMembers = scan.nextInt();
-                    scan.nextLine(); // skip the newline character after the number of members
-                    while (number < totalMembers) {
+                    String firstName = scan.nextLine();
+                    String lastName = scan.nextLine();
+                    String address = scan.nextLine();
+                    String phone = scan.nextLine();
+                    double salary = scan.nextDouble();
+                    scan.nextLine();
+                    Employee employee = new PersonalTrainer(firstName, lastName, address, phone, salary);
+                    GymSystem.employees.add(employee);
+                    int totalMembers = scan.nextInt();
+                    scan.nextLine();
+                    for (int j = 0; j < totalMembers; j++) {
                         String memberType = scan.nextLine();
                         if (memberType.equalsIgnoreCase("staff")) {
-                            firstName = scan.nextLine();
-                            lastName = scan.nextLine();
-                            address = scan.nextLine();
-                            phone = scan.nextLine();
-                            gender = scan.nextLine();
-                            birthDate = scan.nextLine();
-                            position = scan.nextLine();
-                            department = scan.nextLine();
-
-                            member = new PolytechnicStaff(firstName, lastName, address, phone, gender, birthDate, position, department);
+                            String firstNameMem = scan.nextLine();
+                            String lastNameMem = scan.nextLine();
+                            String addressMem = scan.nextLine();
+                            String birthDateMem = scan.nextLine();
+                            String phoneMem = scan.nextLine();
+                            String genderMem = scan.nextLine();
+                            String positionMem = scan.nextLine();
+                            String departmentMem = scan.nextLine();
+                            Member member = new PolytechnicStaff(firstNameMem, lastNameMem, addressMem, phoneMem, genderMem, birthDateMem, positionMem, departmentMem);
+                            GymSystem.members.add(member);
+                            ((PersonalTrainer) employee).getMembers().add(member);
                         } else if (memberType.equalsIgnoreCase("student")) {
-                            firstName = scan.nextLine();
-                            lastName = scan.nextLine();
-                            address = scan.nextLine();
-                            phone = scan.nextLine();
-                            gender = scan.nextLine();
-                            birthDate = scan.nextLine();
-                            course = scan.nextLine();
-                            team = scan.nextLine();
-
-                            member = new PolytechnicStudent(firstName, lastName, address, phone, gender, birthDate, course, team);
+                            String firstNameMem = scan.nextLine();
+                            String lastNameMem = scan.nextLine();
+                            String addressMem = scan.nextLine();
+                            String birthDateMem = scan.nextLine();
+                            String phoneMem = scan.nextLine();
+                            String genderMem = scan.nextLine();
+                            String majorMem = scan.nextLine();
+                            String teamMem = scan.nextLine();
+                            Member member = new PolytechnicStudent(firstNameMem, lastNameMem, addressMem, phoneMem, genderMem, birthDateMem, majorMem, teamMem);
+                            ((PersonalTrainer) employee).getMembers().add(member);
+                            GymSystem.members.add(member);
                         }
-                        GymSystem.members.add(member);
-                        number++;
+
                     }
-                    number = 0;
                 }
             }
-            scan.close();
+        }
+        writeMember();
+        writeEmployee();
 
-            // serialize the data and save it to a file
-            FileOutputStream fos = new FileOutputStream(serializedFile);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(GymSystem.employees);
-            oos.writeObject(GymSystem.members);
-            oos.close();
-            fos.close();
+    }
+
+    /**
+     * Generates a marketing report for Polytechnic staff and students. The
+     * report includes information such as full name, address, phone number,
+     * position, department, major, and sport team.
+     *
+     */
+    public void generateMarketingReport() {
+        Path filePath = Paths.get("marketingReport.txt");
+        Charset charset = StandardCharsets.UTF_8;
+
+        try (BufferedWriter bufferedWriter = Files.newBufferedWriter(filePath, charset)) {
+            PrintWriter printWriter = new PrintWriter(bufferedWriter);
+            int totalStaff = 0;
+
+            // Write formatted data using print writer
+            printWriter.println("Polytechnic Staffs:");
+            for (Member mem : GymSystem.members) {
+                if (mem instanceof PolytechnicStaff) {
+                    printWriter.write("Full Name:" + mem.getFullName());
+                    printWriter.println();
+                    printWriter.write("Address:" + mem.getAddress());
+                    printWriter.println();
+                    printWriter.write("Phone:" + mem.getPhone());
+                    printWriter.println();
+                    printWriter.write("Position:" + ((PolytechnicStaff) mem).getPosition());
+                    printWriter.println();
+                    printWriter.write("Department:" + ((PolytechnicStaff) mem).getDepartment());
+                    printWriter.println();
+                    totalStaff++;
+                }
+            }
+            printWriter.write("Total amount of: " + totalStaff);
+            printWriter.println();
+            printWriter.println();
+            printWriter.println("Polytechnic Students:");
+            for (Member mem : GymSystem.members) {
+                if (mem instanceof PolytechnicStudent) {
+                    printWriter.write("Full Name:" + mem.getFullName());
+                    printWriter.println();
+                    printWriter.write("Address:" + mem.getAddress());
+                    printWriter.println();
+                    printWriter.write("Phone:" + mem.getPhone());
+                    printWriter.println();
+                    printWriter.write("Major:" + ((PolytechnicStudent) mem).getMajor());
+                    printWriter.println();
+                    printWriter.write("Sport Team:" + ((PolytechnicStudent) mem).getTeam());
+                    printWriter.println();
+                }
+            }
+            printWriter.write("Total amount of: " + (GymSystem.members.size() - totalStaff));
+        } catch (IOException e) {
+            System.out.println("Error occurred");
         }
     }
 

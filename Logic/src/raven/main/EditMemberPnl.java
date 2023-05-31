@@ -379,6 +379,7 @@ public class EditMemberPnl extends javax.swing.JPanel {
             }
 
             manageMembersPnl.showData();
+            Message obj = new Message();
             obj.jLabel1.setText("Data has been updated");
             GlassPanePopup.showPopup(obj);
             obj.eventOK(new ActionListener() {
@@ -391,7 +392,7 @@ public class EditMemberPnl extends javax.swing.JPanel {
                     MainFrame.body.revalidate();
                 }
             });
-            FileManager.getInstance().WriteMember();
+            FileManager.getInstance().writeMember();
         } catch (Exception e) {
             obj.jLabel1.setText("Please check your input data");
             GlassPanePopup.showPopup(obj);

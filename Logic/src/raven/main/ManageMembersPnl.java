@@ -137,6 +137,9 @@ public class ManageMembersPnl extends javax.swing.JPanel {
             editMemberPnl.showData();
             MainFrame.body.repaint();
             MainFrame.body.revalidate();
+        } else {
+            obj.jLabel1.setText("Please Select a member to edit");
+            GlassPanePopup.showPopup(obj);
         }
     }//GEN-LAST:event_editBtnActionPerformed
 
@@ -145,7 +148,7 @@ public class ManageMembersPnl extends javax.swing.JPanel {
             GymSystem.members.remove(membersTable.getSelectedRow());
 
             try {
-                FileManager.getInstance().WriteMember();
+                FileManager.getInstance().writeMember();
             } catch (IOException ex) {
                 java.util.logging.Logger.getLogger(ManageMembersPnl.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }

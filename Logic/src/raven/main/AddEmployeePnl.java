@@ -227,7 +227,7 @@ public class AddEmployeePnl extends javax.swing.JPanel {
             txtPhone.setText("");
             txtSalary.setText("");
             EmpTypeRadioBtnGroup.clearSelection();
-            FileManager.getInstance().WriteEmployee();
+            FileManager.getInstance().writeEmployee();
         } catch (Exception e) {
             obj.jLabel1.setText("Please check your input data");
             GlassPanePopup.showPopup(obj);

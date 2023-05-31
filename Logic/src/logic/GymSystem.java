@@ -13,8 +13,8 @@ public class GymSystem {
     }
        public static void initializeSystem() {
         try {
-            FileManager.getInstance().ReadEmployees();
-            FileManager.getInstance().ReadMembers();
+            FileManager.getInstance().readEmployees();
+            FileManager.getInstance().readMembers();
             Employee.loadEmpCount();
             Member.loadEmpCount();
             FileManager.getInstance().loadStartupFile();
