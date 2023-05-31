@@ -4,6 +4,7 @@
  */
 package raven.main;
 
+import FileManager.FileManager;
 import GUI.Message;
 import GlassPanePopup.GlassPanePopup;
 import Logic.GymSystem;
@@ -11,6 +12,9 @@ import Logic.Member;
 import Logic.PolytechnicStudent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,17 +26,20 @@ public class ManageMembersPnl extends javax.swing.JPanel {
     /**
      * Creates new form ManageEmployeePnl
      */
-        Message obj = new Message();
+    Message obj = new Message();
+    EditMemberPnl editMemberPnl;
 
     public ManageMembersPnl() {
         initComponents();
         membersTable.fixTable(jScrollPane);
-                        obj.eventOK(new ActionListener() {
+        obj.eventOK(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 GlassPanePopup.closePopupLast();
             }
         });
+        this.editMemberPnl = new EditMemberPnl(this);
+
     }
 
     /**
@@ -47,6 +54,8 @@ public class ManageMembersPnl extends javax.swing.JPanel {
         textField1 = new GUI.TextField();
         jScrollPane = new javax.swing.JScrollPane();
         membersTable = new Table.Table();
+        editBtn = new GUI.Button();
+        delBtn = new GUI.Button();
 
         setBackground(new java.awt.Color(42, 107, 120));
 
@@ -71,6 +80,20 @@ public class ManageMembersPnl extends javax.swing.JPanel {
         membersTable.setShowGrid(true);
         jScrollPane.setViewportView(membersTable);
 
+        editBtn.setText("Edit");
+        editBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editBtnActionPerformed(evt);
+            }
+        });
+
+        delBtn.setText("Delete");
+        delBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,6 +107,12 @@ public class ManageMembersPnl extends javax.swing.JPanel {
                         .addGap(95, 95, 95)
                         .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(142, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(delBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(92, 92, 92))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,12 +121,49 @@ public class ManageMembersPnl extends javax.swing.JPanel {
                 .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(delBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
+        if (membersTable.getSelectedRow() != -1) {
+            MainFrame.body.removeAll();
+            MainFrame.body.add(editMemberPnl);
+            editMemberPnl.mem = GymSystem.members.get(membersTable.getSelectedRow());
+            editMemberPnl.showData();
+            MainFrame.body.repaint();
+            MainFrame.body.revalidate();
+        }
+    }//GEN-LAST:event_editBtnActionPerformed
+
+    private void delBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBtnActionPerformed
+        if (membersTable.getSelectedRow() != -1) {
+            GymSystem.members.remove(membersTable.getSelectedRow());
+
+            try {
+                FileManager.getInstance().WriteMember();
+            } catch (IOException ex) {
+                java.util.logging.Logger.getLogger(ManageMembersPnl.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
+
+            showData();
+            obj.jLabel1.setText("Member has been deleted");
+            GlassPanePopup.showPopup(obj);
+        } else {
+
+            obj.jLabel1.setText("Please Select a member to delete");
+            GlassPanePopup.showPopup(obj);
+        }
+    }//GEN-LAST:event_delBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private GUI.Button delBtn;
+    private GUI.Button editBtn;
     private javax.swing.JScrollPane jScrollPane;
     private Table.Table membersTable;
     private GUI.TextField textField1;
@@ -107,9 +173,9 @@ public void showData() {
         model.setRowCount(0);
         for (Member mem : GymSystem.members) {
             if (mem instanceof PolytechnicStudent) {
-                membersTable.addRow(new Object[]{mem.getId(), mem.getFullName(),mem.getPhone(),mem.getBirthDate(), "Student"});
+                membersTable.addRow(new Object[]{mem.getId(), mem.getFullName(), mem.getPhone(), mem.getBirthDate(), "Student"});
             } else {
-                membersTable.addRow(new Object[]{mem.getId(), mem.getFullName(),mem.getPhone(),mem.getBirthDate(), "Staff"});
+                membersTable.addRow(new Object[]{mem.getId(), mem.getFullName(), mem.getPhone(), mem.getBirthDate(), "Staff"});
             }
         }
     }
