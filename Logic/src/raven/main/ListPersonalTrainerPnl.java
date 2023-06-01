@@ -4,17 +4,36 @@
  */
 package raven.main;
 
+import Logic.GymSystem;
+import Logic.PersonalTrainer;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import raven.main.PersonalTrainerPnl;
+
 /**
  *
  * @author alija
  */
+import javax.swing.JComponent;
 public class ListPersonalTrainerPnl extends javax.swing.JPanel {
+PersonalTrainerPnl pe = new PersonalTrainerPnl();
+
+  
 
     /**
      * Creates new form ListPersonalTrainerPnl
      */
     public ListPersonalTrainerPnl() {
         initComponents();
+    }
+    
+public void populateTable(ArrayList<PersonalTrainer> personalTrainers) {
+      DefaultTableModel model = (DefaultTableModel) table1.getModel();
+        model.setRowCount(0);
+
+        for (PersonalTrainer trainer : personalTrainers) {
+            model.addRow(new Object[]{trainer.getId(), trainer.getFullName(), trainer.getPhone(), trainer.getMembers().size()});
+        }
     }
 
     /**

@@ -13,6 +13,7 @@ import Logic.PolytechnicStudent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,10 +22,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PersonalTrainerPnl extends javax.swing.JPanel {
 
+
+ public List<PersonalTrainer> getPersonalTrainers() {
+        return ps;
+    }
     /**
      * Creates new form ManageEmployeePnl
      */
-    ArrayList<PersonalTrainer> ps = new ArrayList<PersonalTrainer>();
+     List<PersonalTrainer> ps = new ArrayList<PersonalTrainer>();
     Message obj = new Message();
 
     public PersonalTrainerPnl() {
@@ -106,15 +111,17 @@ public class PersonalTrainerPnl extends javax.swing.JPanel {
     private GUI.TextField textField1;
     // End of variables declaration//GEN-END:variables
 public void showData() {
+          ListPersonalTrainerPnl listPanel = new ListPersonalTrainerPnl();
+    listPanel.populateTable((ArrayList<PersonalTrainer>) ps);
         DefaultTableModel model = (DefaultTableModel) personalTrainerPnl.getModel();
-        model.setRowCount(0);
+    model.setRowCount(0);
         for (Employee emp : GymSystem.employees) {
             if (emp instanceof PersonalTrainer trainer) {
                 ps.add(trainer);
             }
         }
-        for (PersonalTrainer aTrainer : ps) {
-            personalTrainerPnl.addRow(new Object[]{aTrainer.getId(), aTrainer.getFullName(), aTrainer.getPhone(), aTrainer.getMembers().size()});
-        }
+         for (PersonalTrainer trainer : ps) {
+        model.addRow(new Object[]{trainer.getId(), trainer.getFullName(), trainer.getPhone(), trainer.getMembers().size()});
+    }
     }
 }

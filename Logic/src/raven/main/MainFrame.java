@@ -11,7 +11,9 @@ import component.DefaultForm;
 import java.awt.Component;
 import raven.menu.MenuEvent;
 import FileManager.FileManager;
+import Logic.PersonalTrainer;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,6 +33,7 @@ public class MainFrame extends javax.swing.JFrame {
     ListPersonalTrainerPnl listPersonalTrainerPnl = new ListPersonalTrainerPnl();
     ManageEmployeesPnl manageEmployeesPnl = new ManageEmployeesPnl();
     ManageMembersPnl manageMembersPnl = new ManageMembersPnl();
+    PersonalTrainerPnl pe = new PersonalTrainerPnl();
 
     public MainFrame() throws IOException, ClassNotFoundException {
         initComponents();
@@ -67,6 +70,12 @@ public class MainFrame extends javax.swing.JFrame {
                     assignTrainerPnl.updateTable();
                     showForm(assignTrainerPnl);
                 }
+              else if (index == 1 && subIndex == 3) {
+      ArrayList<PersonalTrainer> personalTrainers = (ArrayList<PersonalTrainer>) pe.getPersonalTrainers();
+    listPersonalTrainerPnl.populateTable(personalTrainers);
+    showForm(listPersonalTrainerPnl);
+    pe.showData();
+}
             }
         });
     }
