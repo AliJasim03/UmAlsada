@@ -5,7 +5,7 @@
 package logic;
 
 import java.io.IOException;
-import raven.main.MainFrame;
+import GUI.MainFrame;
 
 /**
  *
