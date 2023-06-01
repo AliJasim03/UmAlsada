@@ -1,7 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+/**
+
+This class represents a JPanel for adding a new member to the gym system.
+It provides a form for entering the member's details such as name, address, phone number, gender, date of birth, and member type.
+The user can enter the details and click the "Add" button to add the member to the system.
+The class also handles the event listeners for various GUI components.
+*/
 package GUI;
 
 import Calander.EventDateChooser;
@@ -27,7 +30,10 @@ import javax.swing.JFrame;
 public class AddMemberPnl extends javax.swing.JPanel {
 
     Message obj = new Message();
-
+/**
+ * Creates a new instance of AddMemberPnl.
+ * Initializes the GUI components, sets up event listeners, and configures additional functionalities.
+ */
     public AddMemberPnl() {
         initComponents();
         showExtraData();

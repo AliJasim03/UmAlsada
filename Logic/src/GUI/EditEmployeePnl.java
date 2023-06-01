@@ -1,7 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
+/**
+
+The EditEmployeePnl class represents a panel used for editing employee information.
+
+It allows modifying the first name, last name, address, phone number, salary, and employee type.
+
+This panel is used in the gym management system.
+*/
 package GUI;
 
 import CustomGUI.Message;
@@ -261,6 +266,16 @@ public class EditEmployeePnl extends javax.swing.JPanel {
                     MainFrame.body.revalidate();
                 }
             });
+            /**
+
+Event handler for the "Save" button.
+
+Updates the employee information and notifies the user about the status.
+
+Writes the updated employee data to a file.
+
+@param evt The action event triggered by the "Save" button
+*/
             // Write the updated employee data to a file
             FileManager.getInstance().writeEmployee();
         } catch (Exception e) {
@@ -268,7 +283,12 @@ public class EditEmployeePnl extends javax.swing.JPanel {
             GlassPanePopup.showPopup(obj);
         }
     }//GEN-LAST:event_saveBtnActionPerformed
+/**
 
+Event handler for the "Back" button.
+Switches back to the parent panel.
+@param evt The action event triggered by the "Back" button
+*/
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         MainFrame.body.removeAll();
         manageEmployeesPnl.showData();
