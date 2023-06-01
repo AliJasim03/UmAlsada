@@ -9,11 +9,14 @@ import java.awt.geom.RoundRectangle2D;
 import GlassPanePopup.GlassPanePopup;
 
 /**
- *
- * @author RAVEN
+ * This class represents a custom JPanel used for displaying messages.
+ * It provides a rounded rectangle background and an OK button.
  */
 public class Message extends javax.swing.JPanel {
-
+    /**
+     * Creates a new instance of the Message class.
+     * Initializes the components and sets up the panel.
+     */
     public Message() {
         initComponents();
         setOpaque(false);

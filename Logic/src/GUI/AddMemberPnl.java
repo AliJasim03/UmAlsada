@@ -1,10 +1,13 @@
 /**
-
-This class represents a JPanel for adding a new member to the gym system.
-It provides a form for entering the member's details such as name, address, phone number, gender, date of birth, and member type.
-The user can enter the details and click the "Add" button to add the member to the system.
-The class also handles the event listeners for various GUI components.
-*/
+ * This class represents a JPanel for adding a new member to the gym system.
+ * It provides a form for entering the member's details such as name, address, phone number, gender, date of birth, and member type.
+ * The user can enter the details and click the "Add" button to add the member to the system.
+ * The class also handles the event listeners for various GUI components.
+ */
+/**
+ * Creates a new instance of AddMemberPnl.
+ * Initializes the GUI components, sets up event listeners, and configures additional functionalities.
+ */
 package GUI;
 
 import Calander.EventDateChooser;
@@ -24,16 +27,18 @@ import Logic.PolytechnicStudent;
 import javax.swing.JFrame;
 
 /**
- *
- * @author alija
+ * This class represents a JPanel for adding a new member to the gym system.
+ * It provides a form for entering the member's details such as name, address, phone number, gender, date of birth, and member type.
+ * The user can enter the details and click the "Add" button to add the member to the system.
+ * The class also handles the event listeners for various GUI components.
  */
 public class AddMemberPnl extends javax.swing.JPanel {
 
     Message obj = new Message();
 /**
- * Creates a new instance of AddMemberPnl.
- * Initializes the GUI components, sets up event listeners, and configures additional functionalities.
- */
+     * Creates a new instance of AddMemberPnl.
+     * Initializes the GUI components, sets up event listeners, and configures additional functionalities.
+     */
     public AddMemberPnl() {
         initComponents();
         showExtraData();
@@ -262,7 +267,12 @@ public class AddMemberPnl extends javax.swing.JPanel {
     private void maleRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleRadioButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_maleRadioButtonActionPerformed
-
+ /**
+     * Event handler for the "Add" button.
+     * Adds a new member to the system based on the entered details.
+     *
+     * @param evt The action event triggered by clicking the "Add" button.
+     */
     private void addMemBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemBtnActionPerformed
         String gender = null;
         if (maleRadioButton.isSelected()) {
@@ -302,7 +312,12 @@ public class AddMemberPnl extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_addMemBtnActionPerformed
-
+  /**
+     * Event handler for selecting the "Student" member type.
+     * Shows the additional fields for student members.
+     *
+     * @param evt The action event triggered by selecting the "Student" radio button.
+     */
     private void studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentActionPerformed
         showExtraData();
         if (student.isSelected()) {
@@ -311,7 +326,12 @@ public class AddMemberPnl extends javax.swing.JPanel {
 
         }
             }//GEN-LAST:event_studentActionPerformed
-
+/**
+     * Event handler for selecting the "Staff" member type.
+     * Shows the additional fields for staff members.
+     *
+     * @param evt The action event triggered by selecting the "Staff" radio button.
+     */
     private void staffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffActionPerformed
         showExtraData();
         if (staff.isSelected()) {

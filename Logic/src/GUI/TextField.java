@@ -26,8 +26,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicTextFieldUI;
 
 /**
- *
- * @author alija
+ * This class extends the JTextField class to provide a custom text field with a rounded shape and shadow effect.
  */
 public class TextField extends JTextField {
 
@@ -55,7 +54,10 @@ public class TextField extends JTextField {
     private Color shadowColor = new Color(170, 170, 170);
     private BufferedImage imageShadow;
     private final Insets shadowSize = new Insets(2, 5, 8, 5);
-
+/**
+     * Creates a new instance of the TextField class.
+     * Configures the text field with default settings.
+     */
     public TextField() {
         setUI(new TextUI());
         setOpaque(false);

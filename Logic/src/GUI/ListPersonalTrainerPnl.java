@@ -12,8 +12,8 @@ import Logic.PersonalTrainer;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author alija
+ * This class represents a panel for listing personal trainers.
+ * It displays a table of personal trainers with their information and allows the user to select a trainer to view their assigned members.
  */
 public class ListPersonalTrainerPnl extends javax.swing.JPanel {
 
@@ -110,7 +110,12 @@ public class ListPersonalTrainerPnl extends javax.swing.JPanel {
                 .addGap(0, 78, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+  /**
+     * Handles the event when the mouse is released on the trainersListTable.
+     * If a trainer is selected, the listMembersOfTrainerPnl is shown with the selected trainer's information.
+     * Otherwise, a message is displayed to prompt the user to select a trainer.
+     * @param evt The MouseEvent object.
+     */ 
     private void trainersListTableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trainersListTableMouseReleased
         if (trainersListTable.getSelectedRow() != -1) {
             MainFrame.body.removeAll();
@@ -132,6 +137,10 @@ public class ListPersonalTrainerPnl extends javax.swing.JPanel {
     private CustomGUI.TextField textField1;
     private Table.Table trainersListTable;
     // End of variables declaration//GEN-END:variables
+       // End of variables declaration                   
+    /**
+     * Populates the trainersListTable with personal trainers' information.
+     */
     public void populateTrainersTable() {
         DefaultTableModel model = (DefaultTableModel) trainersListTable.getModel();
         model.setRowCount(0);

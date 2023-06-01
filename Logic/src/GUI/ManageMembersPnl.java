@@ -18,8 +18,8 @@ import java.lang.System.Logger.Level;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author alija
+ * This class represents a panel for managing members in the Gym System.
+ * It provides functionality for editing and deleting members.
  */
 public class ManageMembersPnl extends javax.swing.JPanel {
 
@@ -29,6 +29,10 @@ public class ManageMembersPnl extends javax.swing.JPanel {
     Message obj = new Message();
     EditMemberPnl editMemberPnl;
 
+    /**
+     * Creates a new instance of the ManageMembersPnl class.
+     * Initializes the components and sets up event listeners.
+     */
     public ManageMembersPnl() {
         initComponents();
         membersTable.fixTable(jScrollPane);
@@ -134,7 +138,12 @@ public class ManageMembersPnl extends javax.swing.JPanel {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+  /**
+     * Handles the action performed when the edit button is clicked.
+     * If a member is selected, it opens the edit member panel and shows the selected member's data.
+     * If no member is selected, it displays a message asking the user to select a member.
+     * @param evt The action event triggered by clicking the edit button.
+     */
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         if (membersTable.getSelectedRow() != -1) {
             MainFrame.body.removeAll();
@@ -148,7 +157,13 @@ public class ManageMembersPnl extends javax.swing.JPanel {
             GlassPanePopup.showPopup(obj);
         }
     }//GEN-LAST:event_editBtnActionPerformed
-
+   /**
+     * Handles the action performed when the delete button is clicked.
+     * If a member is selected, it removes the selected member from the Gym System.
+     * It also updates the member file on disk.
+     * If no member is selected, it displays a message asking the user to select a member.
+     * @param evt The action event triggered by clicking the delete button.
+     */
     private void delBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBtnActionPerformed
         if (membersTable.getSelectedRow() != -1) {
             GymSystem.members.remove(membersTable.getSelectedRow());
@@ -177,7 +192,11 @@ public class ManageMembersPnl extends javax.swing.JPanel {
     private Table.Table membersTable;
     private CustomGUI.TextField textField1;
     // End of variables declaration//GEN-END:variables
-public void showData() {
+ /**
+     * Displays the member data in the members table.
+     * Retrieves the member data from the Gym System and populates the table with it.
+     */
+    public void showData() {
         DefaultTableModel model = (DefaultTableModel) membersTable.getModel();
         model.setRowCount(0);
         for (Member mem : GymSystem.members) {

@@ -14,13 +14,16 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 /**
- *
- * @author RAVEN
+ * This class represents a custom button with rounded corners.
+ * The button provides a visually appealing appearance with smooth rendering and mouse interaction effects.
  */
 public class Button extends JButton {
 
     private boolean mousePress;
-
+/**
+     * Creates a new instance of Button.
+     * Initializes the button's properties and sets up the mouse event listeners.
+     */
     public Button() {
         setContentAreaFilled(false);
         setBorder(new EmptyBorder(7, 5, 7, 5));
@@ -41,6 +44,12 @@ public class Button extends JButton {
         });
     }
 
+     /**
+     * Overrides the paintComponent method to provide custom rendering of the button.
+     * Applies anti-aliasing and draws a rounded rectangle as the button background.
+     *
+     * @param grphcs The Graphics object to paint on.
+     */
     @Override
     protected void paintComponent(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs.create();

@@ -19,20 +19,28 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 
 /**
- *
- * @author alija
+ * The GraphicsUtilities class provides utility methods for working with images and graphics.
  */
 public class GraphicsUtilities {
 
     private GraphicsUtilities() {
     }
 
-    // Returns the graphics configuration for the primary screen
+   /**
+     * Returns the graphics configuration for the primary screen.
+     *
+     * @return The graphics configuration.
+     */
     private static GraphicsConfiguration getGraphicsConfiguration() {
         return GraphicsEnvironment.getLocalGraphicsEnvironment().
                 getDefaultScreenDevice().getDefaultConfiguration();
     }
-
+ /**
+     * Creates a color model compatible image based on the given image.
+     *
+     * @param image The source image.
+     * @return The compatible image.
+     */
     public static BufferedImage createColorModelCompatibleImage(BufferedImage image) {
         ColorModel cm = image.getColorModel();
         return new BufferedImage(cm,
@@ -40,27 +48,58 @@ public class GraphicsUtilities {
                         image.getHeight()),
                 cm.isAlphaPremultiplied(), null);
     }
-
+ /**
+     * Creates a compatible image based on the given image.
+     *
+     * @param image The source image.
+     * @return The compatible image.
+     */
     public static BufferedImage createCompatibleImage(BufferedImage image) {
         return createCompatibleImage(image, image.getWidth(), image.getHeight());
     }
-
+    /**
+     * Creates a compatible image with the specified dimensions based on the given image.
+     *
+     * @param image  The source image.
+     * @param width  The width of the new image.
+     * @param height The height of the new image.
+     * @return The compatible image.
+     */
     public static BufferedImage createCompatibleImage(BufferedImage image,
             int width, int height) {
         return getGraphicsConfiguration().createCompatibleImage(width, height,
                 image.getTransparency());
     }
-
+ /**
+     * Creates a compatible image with the specified dimensions.
+     *
+     * @param width  The width of the new image.
+     * @param height The height of the new image.
+     * @return The compatible image.
+     */
     public static BufferedImage createCompatibleImage(int width, int height) {
         return getGraphicsConfiguration().createCompatibleImage(width, height);
     }
-
+ /**
+     * Creates a compatible translucent image with the specified dimensions.
+     *
+     * @param width  The width of the new image.
+     * @param height The height of the new image.
+     * @return The compatible translucent image.
+     */
     public static BufferedImage createCompatibleTranslucentImage(int width,
             int height) {
         return getGraphicsConfiguration().createCompatibleImage(width, height,
                 Transparency.TRANSLUCENT);
     }
 
+    /**
+     * Loads an image from the specified URL and returns a compatible version of it.
+     *
+     * @param resource The URL of the image resource.
+     * @return The compatible image.
+     * @throws IOException If an error occurs while loading the image.
+     */
     public static BufferedImage loadCompatibleImage(URL resource)
             throws IOException {
         BufferedImage image = ImageIO.read(resource);

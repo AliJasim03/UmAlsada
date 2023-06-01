@@ -5,13 +5,17 @@
 package GUI;
 
 /**
- *
- * @author alija
+ * This class represents a dashboard panel in a GUI application.
+ * The panel contains various components for managing employees and members.
  */
 public class DashBaord extends javax.swing.JPanel {
 
-    /**
-     * Creates new form DashBaord
+   /**
+     * Creates a new instance of DashBaord.
+     * Initializes the panel and sets up the necessary components.
+     *
+     * @param addEmployeePnl The panel for adding an employee.
+     * @param addMemberPnl   The panel for adding a member.
      */
     AddEmployeePnl addEmployeePnl;
     AddMemberPnl addMemberPnl;

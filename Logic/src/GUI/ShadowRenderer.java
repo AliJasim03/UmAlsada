@@ -8,37 +8,58 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 
 /**
- *
- * @author alija
+ * This class provides a shadow rendering effect for an image.
+ * It generates a shadow image with a specified size, opacity, and color.
  */
 public class ShadowRenderer {
 
     private int size = 5;
     private float opacity = 0.5f;
     private Color color = Color.BLACK;
-
+   /**
+     * Creates a new instance of the ShadowRenderer class with default values.
+     * The default shadow size is 5, opacity is 0.5f, and color is black.
+     */
     public ShadowRenderer() {
         this(5, 0.5f, Color.BLACK);
     }
-
+/**
+     * Creates a new instance of the ShadowRenderer class with specified values.
+     * @param size The size of the shadow.
+     * @param opacity The opacity of the shadow (between 0 and 1).
+     * @param color The color of the shadow.
+     */
     public ShadowRenderer(final int size, final float opacity, final Color color) {
         this.size = size;
         this.opacity = opacity;
         this.color = color;
     }
-
+ /**
+     * Gets the color of the shadow.
+     * @return The color of the shadow.
+     */
     public Color getColor() {
         return color;
     }
-
+ /**
+     * Gets the opacity of the shadow.
+     * @return The opacity of the shadow.
+     */
     public float getOpacity() {
         return opacity;
     }
-
+  /**
+     * Gets the size of the shadow.
+     * @return The size of the shadow.
+     */
     public int getSize() {
         return size;
     }
-
+  /**
+     * Creates a shadow image for the specified source image.
+     * @param image The source image to apply the shadow effect on.
+     * @return The shadow image with the applied shadow effect.
+     */
     public BufferedImage createShadow(final BufferedImage image) {
         int shadowSize = size * 2;
         int srcWidth = image.getWidth();

@@ -5,8 +5,8 @@
 package GUI;
 
 /**
- *
- * @author alija
+ * This class represents a custom JRadioButton with a customized appearance.
+ * It provides a rounded background and custom selection indicator.
  */
 import java.awt.Color;
 import java.awt.Cursor;
@@ -16,13 +16,20 @@ import java.awt.RenderingHints;
 import javax.swing.JRadioButton;
 
 public class RadioButtonCustom extends JRadioButton {
-
+    /**
+     * Creates a new instance of the RadioButtonCustom class.
+     * Initializes the button's appearance and cursor.
+     */
     public RadioButtonCustom() {
         setOpaque(false);
         setCursor(new Cursor(Cursor.HAND_CURSOR));
         setBackground(new Color(69, 124, 235));
     }
-
+ /**
+     * Paints the component with a rounded background and custom selection indicator.
+     * Overrides the default paint method to customize the appearance of the radio button.
+     * @param grphcs The Graphics object used for painting.
+     */
     @Override
     public void paint(Graphics grphcs) {
         super.paint(grphcs);

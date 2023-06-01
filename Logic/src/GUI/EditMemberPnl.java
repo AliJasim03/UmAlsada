@@ -22,13 +22,20 @@ import Logic.PolytechnicStaff;
 import Logic.PolytechnicStudent;
 import javax.swing.JFrame;
 
-
+/**
+ * The EditMemberPnl class represents a JPanel used for editing member information.
+ */
 public class EditMemberPnl extends javax.swing.JPanel {
-
+/**
+     * The message object for displaying pop-up messages.
+     */
     Message obj = new Message();
     ManageMembersPnl manageMembersPnl;
     Member mem;
-
+ /**
+     * Constructs an EditMemberPnl object with the specified ManageMembersPnl.
+     * @param manageMembersPnl The ManageMembersPnl object.
+     */
     public EditMemberPnl(ManageMembersPnl manageMembersPnl) {
         initComponents();
                 // Add an ActionListener to handle the "OK" button click event on the message popup

@@ -22,8 +22,9 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author alija
+ * This class represents a JPanel for assigning trainers to members in the gym system.
+ * It provides a table with member information and allows selecting a trainer from a dropdown menu for each member.
+ * The class also handles event listeners for various GUI components.
  */
 public class AssignTrainerPnl extends javax.swing.JPanel {
 
@@ -31,7 +32,10 @@ public class AssignTrainerPnl extends javax.swing.JPanel {
      * Creates new form AssignTrainerPnl
      */
     Message obj = new Message();
-
+/**
+     * Creates a new instance of AssignTrainerPnl.
+     * Initializes the GUI components and sets up additional functionalities.
+     */
     public AssignTrainerPnl() {
         initComponents();
         assignTrainerTable.fixTable(jScrollPane);
@@ -130,7 +134,12 @@ public class AssignTrainerPnl extends javax.swing.JPanel {
                 .addContainerGap(78, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+ /**
+     * Event handler for the trainersComboBox focus lost event.
+     * Assigns a trainer to a selected member based on the selected trainer in the combo box.
+     *
+     * @param evt The focus event triggered by losing focus on the trainersComboBox.
+     */
     private void trainersComboBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_trainersComboBoxFocusLost
 
         Member mem = GymSystem.members.get(assignTrainerTable.getSelectedRow());
@@ -202,7 +211,9 @@ public class AssignTrainerPnl extends javax.swing.JPanel {
             trainersComboBox.addItem(emp.getFullName() + " (" + emp.getId() + ")");
         }
     }
-
+ /**
+     * Updates the assignTrainerTable with the member information and assigned trainers.
+     */
     public void updateTable() {
         DefaultTableModel model = (DefaultTableModel) assignTrainerTable.getModel();
         model.setRowCount(0);
@@ -238,7 +249,11 @@ public class AssignTrainerPnl extends javax.swing.JPanel {
             }
         }
     }
-
+   /**
+     * Retrieves the selected member from the assignTrainerTable based on the selected row.
+     *
+     * @return The selected member.
+     */
     public Member getMemTrainerByID() {
         int row = assignTrainerTable.getSelectedRow();
         Object id = assignTrainerTable.getModel().getValueAt(row, 0);

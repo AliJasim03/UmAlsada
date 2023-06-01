@@ -19,13 +19,16 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 /**
- *
- * @author RAVEN
+ * This class represents a custom JButton used as a navigation button.
+ * It provides a rounded rectangle background with a shadow effect.
  */
 public class NavButton extends JButton {
 
     private boolean mousePress;
-
+    /**
+     * Creates a new instance of the NavButton class.
+     * Initializes the button's appearance and mouse listeners.
+     */
     public NavButton() {
         setContentAreaFilled(false);
         setOpaque(false);
@@ -49,7 +52,11 @@ public class NavButton extends JButton {
             }
         });
     }
-
+ /**
+     * Paints the component with a rounded rectangle background and shadow effect.
+     * Overrides the default paintComponent method to customize the appearance of the button.
+     * @param grphcs The Graphics object used for painting.
+     */
     @Override
     protected void paintComponent(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs.create();
@@ -77,7 +84,10 @@ public class NavButton extends JButton {
         super.paintComponent(grphcs);
 
 }
-
+ /**
+     * Sets the roundness of the button's corners.
+     * @param round The roundness value for the corners.
+     */
     
 
     public int getRound() {
@@ -104,7 +114,14 @@ public class NavButton extends JButton {
     private Color shadowColor = new Color(11,158,191);//new Color(170, 170, 170);
     private BufferedImage imageShadow;
     private final Insets shadowSize = new Insets(2, 5, 8, 5);
-
+  /**
+     * Sets the bounds of the button and creates a new shadow image.
+     * Overrides the default setBounds method to update the shadow image.
+     * @param x The x-coordinate of the button's new position.
+     * @param y The y-coordinate of the button's new position.
+     * @param width The new width of the button.
+     * @param height The new height of the button.
+     */
     @Override
     public void setBounds(int x, int y, int width, int height) {
         super.setBounds(x, y, width, height);

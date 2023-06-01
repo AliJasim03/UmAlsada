@@ -18,8 +18,8 @@ import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author alija
+ * This class represents a panel for managing employees.
+ * It allows the user to view, edit, and delete employees from the system.
  */
 public class ManageEmployeesPnl extends javax.swing.JPanel {
 
@@ -134,7 +134,12 @@ public class ManageEmployeesPnl extends javax.swing.JPanel {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+  /**
+     * Handles the event when the delete button is clicked.
+     * If an employee is selected, it is removed from the system and the table is updated.
+     * Otherwise, a message is displayed to prompt the user to select an employee.
+     * @param evt The ActionEvent object.
+     */
     private void delBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBtnActionPerformed
         if (employeesTable.getSelectedRow() != -1) {
             GymSystem.employees.remove(employeesTable.getSelectedRow());
@@ -153,7 +158,12 @@ public class ManageEmployeesPnl extends javax.swing.JPanel {
             GlassPanePopup.showPopup(obj);
         }
     }//GEN-LAST:event_delBtnActionPerformed
-
+ /**
+     * Handles the event when the edit button is clicked.
+     * If an employee is selected, the editEmployeePnl is shown with the selected employee's information.
+     * Otherwise, a message is displayed to prompt the user to select an employee.
+     * @param evt The ActionEvent object.
+     */
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         if (employeesTable.getSelectedRow() != -1) {
             MainFrame.body.removeAll();
@@ -176,7 +186,11 @@ public class ManageEmployeesPnl extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane;
     private CustomGUI.TextField textField1;
     // End of variables declaration//GEN-END:variables
-public void showData() {
+
+    /**
+     * Updates the table with the data of all employees in the system.
+     */
+    public void showData() {
         DefaultTableModel model = (DefaultTableModel) employeesTable.getModel();
         model.setRowCount(0);
         for (Employee emp : GymSystem.employees) {
