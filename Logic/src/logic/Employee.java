@@ -24,6 +24,7 @@ public class Employee implements Serializable {
         this.phone = phone;
         this.salary = salary;
         totalEmployee++;
+        saveEmpCount();
     }
 
     public int getId() {
@@ -80,7 +81,7 @@ public class Employee implements Serializable {
 
     public static void saveEmpCount() {
         try {
-            FileWriter fw = new FileWriter("src/FileManager/Data/empCount.txt");
+            FileWriter fw = new FileWriter("src/Data/empCount.txt");
             fw.write(String.valueOf(totalEmployee));
             fw.close();
         } catch (IOException e) {
@@ -90,7 +91,7 @@ public class Employee implements Serializable {
 
     public static void loadEmpCount() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader("src/FileManager/Data/empCount.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("src/Data/empCount.txt"));
             totalEmployee = Integer.parseInt(br.readLine());
             br.close();
         } catch (IOException e) {

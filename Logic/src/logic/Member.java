@@ -33,6 +33,7 @@ public class Member implements Serializable {
         this.gender = gender;
         this.birthDate = birthDate;
         totalMember++;
+        saveMemberCount();
     }
 
     // Getters and setters
@@ -98,7 +99,7 @@ public class Member implements Serializable {
 
     public static void saveMemberCount() {
         try {
-            FileWriter fw = new FileWriter("src/FileManager/Data/memberCount.txt");
+            FileWriter fw = new FileWriter("src/Data/memberCount.txt");
             fw.write(String.valueOf(totalMember));
             fw.close();
         } catch (IOException e) {
@@ -108,7 +109,7 @@ public class Member implements Serializable {
 
     public static void loadMemberCount() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader("src/FileManager/Data/memberCount.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("src/Data/memberCount.txt"));
             totalMember = Integer.parseInt(br.readLine());
             br.close();
         } catch (IOException e) {

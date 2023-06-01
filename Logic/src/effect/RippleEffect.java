@@ -1,4 +1,4 @@
-package raven.effect;
+package effect;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;

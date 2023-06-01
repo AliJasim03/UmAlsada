@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import raven.effect.RippleEffect;
+import effect.RippleEffect;
 import raven.swing.shadow.ShadowRenderer;
 
 public class MenuItem extends JButton {

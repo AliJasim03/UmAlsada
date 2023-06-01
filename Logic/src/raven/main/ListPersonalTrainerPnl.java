@@ -4,6 +4,13 @@
  */
 package raven.main;
 
+import GUI.Message;
+import GlassPanePopup.GlassPanePopup;
+import Logic.Employee;
+import Logic.GymSystem;
+import Logic.PersonalTrainer;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author alija
@@ -13,8 +20,11 @@ public class ListPersonalTrainerPnl extends javax.swing.JPanel {
     /**
      * Creates new form ListPersonalTrainerPnl
      */
+    ListMembersOfTrainerPnl listMembersOfTrainerPnl = new ListMembersOfTrainerPnl();
+    Message obj = new Message();
     public ListPersonalTrainerPnl() {
         initComponents();
+        trainersListTable.fixTable(jScrollPane3);
     }
 
     /**
@@ -27,9 +37,8 @@ public class ListPersonalTrainerPnl extends javax.swing.JPanel {
     private void initComponents() {
 
         textField1 = new GUI.TextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table1 = new Table.Table();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        trainersListTable = new Table.Table();
 
         setBackground(new java.awt.Color(42, 107, 120));
 
@@ -42,51 +51,88 @@ public class ListPersonalTrainerPnl extends javax.swing.JPanel {
         textField1.setRound(50);
         textField1.setShadowColor(new java.awt.Color(0, 0, 0));
 
-        table1.setModel(new javax.swing.table.DefaultTableModel(
+        trainersListTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Employee ID", "Employee Name", "NO. Members Assigned"
             }
-        ));
-        jScrollPane1.setViewportView(table1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
-        jScrollPane2.setViewportView(jScrollPane1);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        trainersListTable.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        trainersListTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        trainersListTable.setShowGrid(true);
+        trainersListTable.setShowVerticalLines(false);
+        trainersListTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                trainersListTableMouseReleased(evt);
+            }
+        });
+        jScrollPane3.setViewportView(trainersListTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(271, 271, 271)
-                        .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(199, 199, 199)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addGap(271, 271, 271)
+                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(298, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(50, 50, 50)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+                    .addGap(51, 51, 51)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addContainerGap(468, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(130, 130, 130)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(131, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void trainersListTableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trainersListTableMouseReleased
+            if (trainersListTable.getSelectedRow() != -1) {
+            MainFrame.body.removeAll();
+            MainFrame.body.add(listMembersOfTrainerPnl);
+            listMembersOfTrainerPnl.trainerID = (int) trainersListTable.getValueAt(trainersListTable.getSelectedRow(), 0);
+            listMembersOfTrainerPnl.showData();
+            MainFrame.body.repaint();
+            MainFrame.body.revalidate();
+        } else {
+            obj.jLabel1.setText("Please Select an employee to edit");
+            GlassPanePopup.showPopup(obj);
+        }
+    }//GEN-LAST:event_trainersListTableMouseReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private Table.Table table1;
+    private javax.swing.JScrollPane jScrollPane3;
     private GUI.TextField textField1;
+    private Table.Table trainersListTable;
     // End of variables declaration//GEN-END:variables
+    public void populateTrainersTable() {
+        DefaultTableModel model = (DefaultTableModel) trainersListTable.getModel();
+        model.setRowCount(0);
+        for (Employee emp : GymSystem.employees) {
+            if (emp instanceof PersonalTrainer) {
+                trainersListTable.addRow(new Object[]{emp.getId(), emp.getFullName(), ((PersonalTrainer) emp).getMembers().size()});
+            }
+        }
+    }
 }
