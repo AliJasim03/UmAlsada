@@ -83,6 +83,7 @@ public class ManageMembersPnl extends javax.swing.JPanel {
         editBtn.setBackground(new java.awt.Color(68, 176, 191));
         editBtn.setForeground(new java.awt.Color(233, 189, 78));
         editBtn.setText("Edit");
+        editBtn.setFocusPainted(false);
         editBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         editBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +94,7 @@ public class ManageMembersPnl extends javax.swing.JPanel {
         delBtn.setBackground(new java.awt.Color(68, 176, 191));
         delBtn.setForeground(new java.awt.Color(233, 189, 78));
         delBtn.setText("Delete");
+        delBtn.setFocusPainted(false);
         delBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         delBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

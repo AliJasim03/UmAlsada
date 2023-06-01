@@ -216,6 +216,7 @@ public class EditMemberPnl extends javax.swing.JPanel {
         button1.setBackground(new java.awt.Color(68, 176, 191));
         button1.setForeground(new java.awt.Color(233, 189, 78));
         button1.setText("pick");
+        button1.setFocusPainted(false);
         button1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,6 +228,7 @@ public class EditMemberPnl extends javax.swing.JPanel {
         backBtn.setForeground(new java.awt.Color(255, 255, 255));
         backBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/log-out (2).png"))); // NOI18N
         backBtn.setText("Back");
+        backBtn.setFocusPainted(false);
         backBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         backBtn.setIconTextGap(8);
         backBtn.addActionListener(new java.awt.event.ActionListener() {

@@ -139,6 +139,7 @@
           <Color blue="4e" green="bd" red="e9" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Edit"/>
+        <Property name="focusPainted" type="boolean" value="false"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
         </Property>
@@ -156,6 +157,7 @@
           <Color blue="4e" green="bd" red="e9" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Delete"/>
+        <Property name="focusPainted" type="boolean" value="false"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
         </Property>

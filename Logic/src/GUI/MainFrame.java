@@ -27,16 +27,14 @@ import java.util.logging.Logger;
 public class MainFrame extends javax.swing.JFrame {
 /**
      * Creates a new instance of MainFrame.
-     * @throws IOException if an I/O error occurs while loading data.
-     * @throws ClassNotFoundException if the class of a serialized object cannot be found.
      */
-    DashBaord dashBaord = new DashBaord();
     AddEmployeePnl addEmployeePnl = new AddEmployeePnl();
     AddMemberPnl addMemberPnl = new AddMemberPnl();
     AssignTrainerPnl assignTrainerPnl = new AssignTrainerPnl();
     ListPersonalTrainerPnl listPersonalTrainerPnl = new ListPersonalTrainerPnl();
     ManageEmployeesPnl manageEmployeesPnl = new ManageEmployeesPnl();
     ManageMembersPnl manageMembersPnl = new ManageMembersPnl();
+    DashBaord dashBaord = new DashBaord(addEmployeePnl,addMemberPnl);
 
     Message obj = new Message();
 

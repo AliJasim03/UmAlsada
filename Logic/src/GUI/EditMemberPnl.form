@@ -443,6 +443,7 @@
           <Color blue="4e" green="bd" red="e9" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="pick"/>
+        <Property name="focusPainted" type="boolean" value="false"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
@@ -463,6 +464,7 @@
           <Image iconType="3" name="/Images/log-out (2).png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Back"/>
+        <Property name="focusPainted" type="boolean" value="false"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>

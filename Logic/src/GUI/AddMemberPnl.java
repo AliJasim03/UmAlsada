@@ -241,6 +241,7 @@ public class AddMemberPnl extends javax.swing.JPanel {
         button1.setBackground(new java.awt.Color(68, 176, 191));
         button1.setForeground(new java.awt.Color(233, 189, 78));
         button1.setText("Pick");
+        button1.setFocusPainted(false);
         button1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

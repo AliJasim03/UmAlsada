@@ -78,6 +78,7 @@ public class ListMembersOfTrainerPnl extends javax.swing.JPanel {
         backBtn.setForeground(new java.awt.Color(255, 255, 255));
         backBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/log-out (2).png"))); // NOI18N
         backBtn.setText("Back");
+        backBtn.setFocusPainted(false);
         backBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         backBtn.setIconTextGap(8);
         backBtn.addActionListener(new java.awt.event.ActionListener() {
