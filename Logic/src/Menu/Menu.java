@@ -30,7 +30,8 @@ public class Menu extends JComponent {
         {"Dashboard"},
         {"Employee", "Add employee", "Manage employee", "List personal trainer"},
         {"Member", "Add member", "Manage member", "Assign personal trainer"},
-        {"Marketing report"},};
+        {"Marketing report"},
+        {"         Exit"}};
 
     public Menu() {
         init();
@@ -92,6 +93,10 @@ public class Menu extends JComponent {
                 }
             }
         });
+        if(index == 4){
+            item.setForeground(new Color(255,67,67));
+           item.setAlignmentX(CENTER_ALIGNMENT);
+        }
         item.setFocusPainted(false);
         item.setFont(new java.awt.Font("Segoe UI", 1, 20));
         add(item);

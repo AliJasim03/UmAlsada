@@ -88,6 +88,8 @@ public class AddMemberPnl extends javax.swing.JPanel {
         dateChooserAddMem.setForeground(new java.awt.Color(68, 176, 191));
 
         setBackground(new java.awt.Color(42, 107, 120));
+        setPreferredSize(new java.awt.Dimension(882, 508));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         textField1.setEditable(false);
         textField1.setBackground(new java.awt.Color(233, 189, 78));
@@ -97,6 +99,7 @@ public class AddMemberPnl extends javax.swing.JPanel {
         textField1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         textField1.setRound(50);
         textField1.setShadowColor(new java.awt.Color(0, 0, 0));
+        add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, -1, 67));
 
         txtFm.setBackground(new java.awt.Color(68, 176, 191));
         txtFm.setName("memf"); // NOI18N
@@ -106,39 +109,49 @@ public class AddMemberPnl extends javax.swing.JPanel {
                 txtFmActionPerformed(evt);
             }
         });
+        add(txtFm, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 114, 225, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(233, 189, 78));
         jLabel1.setText("First Name");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 87, -1, -1));
 
         txtPhon.setBackground(new java.awt.Color(68, 176, 191));
         txtPhon.setRound(30);
+        add(txtPhon, new org.netbeans.lib.awtextra.AbsoluteConstraints(515, 114, 225, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(233, 189, 78));
         jLabel4.setText("Phone number ");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(515, 87, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(233, 189, 78));
         jLabel2.setText("Last Name");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 161, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(233, 189, 78));
         jLabel5.setText("Gender");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 161, -1, -1));
 
         txtLm.setBackground(new java.awt.Color(68, 176, 191));
         txtLm.setRound(30);
+        add(txtLm, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 188, 225, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(233, 189, 78));
         jLabel3.setText("Address");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 235, -1, -1));
 
         txtAm.setBackground(new java.awt.Color(68, 176, 191));
         txtAm.setRound(30);
+        add(txtAm, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 262, 225, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(233, 189, 78));
         jLabel6.setText("Member Type");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 221, -1, -1));
 
         RadioButtonMember.add(staff);
         staff.setText("Staff");
@@ -148,6 +161,7 @@ public class AddMemberPnl extends javax.swing.JPanel {
                 staffActionPerformed(evt);
             }
         });
+        add(staff, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 254, -1, -1));
 
         RadioButtonMember.add(student);
         student.setText("Student");
@@ -157,6 +171,7 @@ public class AddMemberPnl extends javax.swing.JPanel {
                 studentActionPerformed(evt);
             }
         });
+        add(student, new org.netbeans.lib.awtextra.AbsoluteConstraints(577, 254, -1, -1));
 
         RadioButtonGender.add(femaleRadioButton);
         femaleRadioButton.setText("Female");
@@ -166,6 +181,7 @@ public class AddMemberPnl extends javax.swing.JPanel {
                 femaleRadioButtonActionPerformed(evt);
             }
         });
+        add(femaleRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(588, 188, -1, -1));
 
         RadioButtonGender.add(maleRadioButton);
         maleRadioButton.setText("Male");
@@ -175,6 +191,7 @@ public class AddMemberPnl extends javax.swing.JPanel {
                 maleRadioButtonActionPerformed(evt);
             }
         });
+        add(maleRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 188, -1, -1));
 
         addEmpBtn.setBackground(new java.awt.Color(68, 176, 191));
         addEmpBtn.setForeground(new java.awt.Color(233, 189, 78));
@@ -186,27 +203,34 @@ public class AddMemberPnl extends javax.swing.JPanel {
                 addMemBtnActionPerformed(evt);
             }
         });
+        add(addEmpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 444, 70, -1));
 
         txtPositionOrMajor.setBackground(new java.awt.Color(68, 176, 191));
         txtPositionOrMajor.setRound(30);
+        add(txtPositionOrMajor, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 320, 225, -1));
 
         lblPositionOrMajor.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         lblPositionOrMajor.setForeground(new java.awt.Color(233, 189, 78));
         lblPositionOrMajor.setText("Position");
+        add(lblPositionOrMajor, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 293, -1, -1));
 
         txtDepartmentOrTeam.setBackground(new java.awt.Color(68, 176, 191));
         txtDepartmentOrTeam.setRound(30);
+        add(txtDepartmentOrTeam, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 406, 225, -1));
 
         lblDepartmenOrTeam.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         lblDepartmenOrTeam.setForeground(new java.awt.Color(233, 189, 78));
         lblDepartmenOrTeam.setText("Department");
+        add(lblDepartmenOrTeam, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 379, -1, -1));
 
         txtDm.setBackground(new java.awt.Color(68, 176, 191));
         txtDm.setRound(30);
+        add(txtDm, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 336, 168, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(233, 189, 78));
         jLabel9.setText("Date of birth");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 309, -1, -1));
 
         button1.setBackground(new java.awt.Color(68, 176, 191));
         button1.setForeground(new java.awt.Color(233, 189, 78));
@@ -217,117 +241,7 @@ public class AddMemberPnl extends javax.swing.JPanel {
                 button1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(101, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtFm, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(txtLm, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAm, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel9)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtDm, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPhon, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(staff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(student, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(maleRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(femaleRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(txtPositionOrMajor, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDepartmentOrTeam, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblPositionOrMajor)
-                                    .addComponent(lblDepartmenOrTeam))))))
-                .addContainerGap(105, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(addEmpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(352, 352, 352))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel1))
-                .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPhon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel5))
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(maleRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(femaleRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(staff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(student, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(lblPositionOrMajor)
-                        .addGap(0, 0, 0)
-                        .addComponent(txtPositionOrMajor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblDepartmenOrTeam)
-                        .addGap(0, 0, 0)
-                        .addComponent(txtDepartmentOrTeam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtLm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addGap(0, 0, 0)
-                        .addComponent(txtAm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9)
-                        .addGap(0, 0, 0)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(14, 14, 14)
-                .addComponent(addEmpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(150, 150, 150))
-        );
+        add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 336, 45, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtFmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFmActionPerformed

@@ -22,9 +22,11 @@ public class ListMembersOfTrainerPnl extends javax.swing.JPanel {
      * Creates new form ListMembersOfTrainerPnl
      */
         Message obj = new Message();
+        ListPersonalTrainerPnl listPersonalTrainerPnl;
         int trainerID;
-    public ListMembersOfTrainerPnl() {
+    public ListMembersOfTrainerPnl(ListPersonalTrainerPnl listPersonalTrainerPnl) {
         initComponents();
+        this.listPersonalTrainerPnl = listPersonalTrainerPnl;
     }
 
     /**
@@ -37,6 +39,8 @@ public class ListMembersOfTrainerPnl extends javax.swing.JPanel {
     private void initComponents() {
 
         trainerMembersTable = new Table.Table();
+        textField1 = new CustomGUI.TextField();
+        backBtn = new CustomGUI.Button();
 
         setBackground(new java.awt.Color(42, 107, 120));
 
@@ -61,21 +65,53 @@ public class ListMembersOfTrainerPnl extends javax.swing.JPanel {
         trainerMembersTable.setShowGrid(true);
         trainerMembersTable.setShowVerticalLines(false);
 
+        textField1.setEditable(false);
+        textField1.setBackground(new java.awt.Color(233, 189, 78));
+        textField1.setForeground(new java.awt.Color(0, 0, 0));
+        textField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textField1.setText("Members List");
+        textField1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        textField1.setRound(50);
+        textField1.setShadowColor(new java.awt.Color(0, 0, 0));
+
+        backBtn.setBackground(new java.awt.Color(255, 102, 102));
+        backBtn.setForeground(new java.awt.Color(255, 255, 255));
+        backBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/log-out (2).png"))); // NOI18N
+        backBtn.setText("Back");
+        backBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        backBtn.setIconTextGap(8);
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(280, 280, 280)
+                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(88, Short.MAX_VALUE)
-                .addComponent(trainerMembersTable, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74))
+                .addContainerGap(51, Short.MAX_VALUE)
+                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(761, 761, 761))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(trainerMembersTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(103, Short.MAX_VALUE)
-                .addComponent(trainerMembersTable, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75))
+                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(trainerMembersTable, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         if (trainerMembersTable.getColumnModel().getColumnCount() > 0) {
@@ -86,8 +122,17 @@ public class ListMembersOfTrainerPnl extends javax.swing.JPanel {
         }
     }// </editor-fold>//GEN-END:initComponents
 
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        MainFrame.body.removeAll();
+        MainFrame.body.add(listPersonalTrainerPnl);
+        MainFrame.body.repaint();
+        MainFrame.body.revalidate();
+    }//GEN-LAST:event_backBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private CustomGUI.Button backBtn;
+    private CustomGUI.TextField textField1;
     private Table.Table trainerMembersTable;
     // End of variables declaration//GEN-END:variables
     public void showData() {
@@ -110,6 +155,6 @@ public class ListMembersOfTrainerPnl extends javax.swing.JPanel {
                 trainerMembersTable.addRow(new Object[]{mem.getId(), mem.getFullName(), "Polytechnic Student", mem.getPhone()});
             }
         }
-//        lblTrainerName.setText("<html>" + empFound.getFullName() + " Members List</html>");
+        textField1.setText(  empFound.getFullName() + " Members List");
     }
 }

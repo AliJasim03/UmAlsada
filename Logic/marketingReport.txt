@@ -42,7 +42,7 @@ Address:Apt32, Road 1388, Manama
 Phone:267790
 Major:Logistics
 Sport Team:Netball
-Full Name:Shaikha Abdull
+Full Name:Shaikha Abdulla
 Address:Apt14, Road 1478, Isa Town
 Phone:127790
 Major:Logistics

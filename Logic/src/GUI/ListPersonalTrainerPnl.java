@@ -20,8 +20,9 @@ public class ListPersonalTrainerPnl extends javax.swing.JPanel {
     /**
      * Creates new form ListPersonalTrainerPnl
      */
-    ListMembersOfTrainerPnl listMembersOfTrainerPnl = new ListMembersOfTrainerPnl();
+    ListMembersOfTrainerPnl listMembersOfTrainerPnl = new ListMembersOfTrainerPnl(this);
     Message obj = new Message();
+
     public ListPersonalTrainerPnl() {
         initComponents();
         trainersListTable.fixTable(jScrollPane3);
@@ -39,6 +40,7 @@ public class ListPersonalTrainerPnl extends javax.swing.JPanel {
         textField1 = new CustomGUI.TextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         trainersListTable = new Table.Table();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(42, 107, 120));
 
@@ -56,11 +58,11 @@ public class ListPersonalTrainerPnl extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Employee ID", "Employee Name", "NO. Members Assigned"
+                "Trainer ID", "Trainer Name", "Phone", "NO. Members Assigned"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -78,36 +80,41 @@ public class ListPersonalTrainerPnl extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(trainersListTable);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(233, 189, 78));
+        jLabel1.setText("<html><center>Select a trianer to view the members</center></html>");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(271, 271, 271)
+                .addGap(337, 337, 337)
                 .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(298, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(50, 50, 50)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
-                    .addGap(51, 51, 51)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(468, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(130, 130, 130)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(131, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 78, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void trainersListTableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trainersListTableMouseReleased
-            if (trainersListTable.getSelectedRow() != -1) {
+        if (trainersListTable.getSelectedRow() != -1) {
             MainFrame.body.removeAll();
             MainFrame.body.add(listMembersOfTrainerPnl);
             listMembersOfTrainerPnl.trainerID = (int) trainersListTable.getValueAt(trainersListTable.getSelectedRow(), 0);
@@ -122,6 +129,7 @@ public class ListPersonalTrainerPnl extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane3;
     private CustomGUI.TextField textField1;
     private Table.Table trainersListTable;
@@ -131,7 +139,7 @@ public class ListPersonalTrainerPnl extends javax.swing.JPanel {
         model.setRowCount(0);
         for (Employee emp : GymSystem.employees) {
             if (emp instanceof PersonalTrainer) {
-                trainersListTable.addRow(new Object[]{emp.getId(), emp.getFullName(), ((PersonalTrainer) emp).getMembers().size()});
+                trainersListTable.addRow(new Object[]{emp.getId(), emp.getFullName(), emp.getPhone(), ((PersonalTrainer) emp).getMembers().size()});
             }
         }
     }
