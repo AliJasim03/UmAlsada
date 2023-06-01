@@ -7,113 +7,116 @@ import java.io.IOException;
 import java.io.Serializable;
 
 public class Member implements Serializable {
-    private static final long serialVersionUID = 2L;
-    private static int totalMember;
+    private static final long serialVersionUID = 2L; // The version UID for serialization
+    private static int totalMember; // The total count of members
 
     static void loadEmpCount() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); // This method is not implemented and throws an exception
     }
-    private int id;
-    private String firstName;
-    private String lastName;
-    private String address;
-    private String phone;
-    private String gender;
-    private String birthDate;
+
+    private int id; // The ID of the member
+    private String firstName; // The first name of the member
+    private String lastName; // The last name of the member
+    private String address; // The address of the member
+    private String phone; // The phone number of the member
+    private String gender; // The gender of the member
+    private String birthDate; // The birth date of the member
 
     public Member() {
+        // Default constructor
     }
 
     public Member(String firstName, String lastName, String address, String phone, String gender, String birthDate) {
-        this.id = totalMember;
-        this.firstName = Character.toUpperCase(firstName.charAt(0)) + firstName.substring(1);
-        this.lastName = Character.toUpperCase(lastName.charAt(0)) + lastName.substring(1);
-        this.address = address;
-        this.phone = phone;
-        this.gender = gender;
-        this.birthDate = birthDate;
-        totalMember++;
+        this.id = totalMember; // Assign the member ID based on the total member count
+        this.firstName = Character.toUpperCase(firstName.charAt(0)) + firstName.substring(1); // Capitalize the first letter of the first name
+        this.lastName = Character.toUpperCase(lastName.charAt(0)) + lastName.substring(1); // Capitalize the first letter of the last name
+        this.address = address; // Set the address
+        this.phone = phone; // Set the phone number
+        this.gender = gender; // Set the gender
+        this.birthDate = birthDate; // Set the birth date
+        totalMember++; // Increment the total member count
+        saveMemberCount(); // Save the member count to a file
     }
 
     // Getters and setters
     public int getId() {
-        return id;
+        return id; // Return the member ID
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id = id; // Set the member ID
     }
 
     public String getFullName() {
-        return getFirstName() + " " + getLastName();
+        return getFirstName() + " " + getLastName(); // Return the full name of the member by combining the first name and last name
     }
 
     public String getFirstName() {
-        return firstName;
+        return firstName; // Return the first name of the member
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = Character.toUpperCase(firstName.charAt(0)) + firstName.substring(1);
+        this.firstName = Character.toUpperCase(firstName.charAt(0)) + firstName.substring(1); // Set the first name and capitalize the first letter
     }
 
     public String getLastName() {
-        return lastName;
+        return lastName; // Return the last name of the member
     }
 
     public void setLastName(String lastName) {
-        this.lastName = Character.toUpperCase(lastName.charAt(0)) + lastName.substring(1);
+        this.lastName = Character.toUpperCase(lastName.charAt(0)) + lastName.substring(1); // Set the last name and capitalize the first letter
     }
 
     public String getAddress() {
-        return address;
+        return address; // Return the address of the member
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.address = address; // Set the address of the member
     }
 
     public String getPhone() {
-        return phone;
+        return phone; // Return the phone number of the member
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = phone; // Set the phone number of the member
     }
 
     public String getGender() {
-        return gender;
+        return gender; // Return the gender of the member
     }
 
     public void setGender(String gender) {
-        this.gender = gender;
+        this.gender = gender; // Set the gender of the member
     }
 
     public String getBirthDate() {
-        return birthDate;
+        return birthDate; // Return the birth date of the member
     }
 
     public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
+        this.birthDate = birthDate; // Set the birth date of the member
     }
 
     public static void saveMemberCount() {
         try {
-            FileWriter fw = new FileWriter("src/FileManager/Data/memberCount.txt");
-            fw.write(String.valueOf(totalMember));
-            fw.close();
+            FileWriter fw = new FileWriter("src/Data/memberCount.txt"); // Create a file writer to write the member count to a file
+            fw.write(String.valueOf(totalMember)); // Write the total member count as a string
+            fw.close(); // Close the file writer
         } catch (IOException e) {
-            System.out.println("Error occurred: " + e.getMessage());
+            System.out.println("Error occurred: " + e.getMessage()); // Print an error message if an exception occurs during file writing
         }
     }
 
     public static void loadMemberCount() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader("src/FileManager/Data/memberCount.txt"));
-            totalMember = Integer.parseInt(br.readLine());
-            br.close();
+            BufferedReader br = new BufferedReader(new FileReader("src/Data/memberCount.txt")); // Create a buffered reader to read the member count from a file
+            totalMember = Integer.parseInt(br.readLine()); // Read the member count as a string and convert it to an integer
+            br.close(); // Close the buffered reader
         } catch (IOException e) {
-            totalMember = 1;
-            System.out.println("Error occurred: " + e.getMessage());
+            totalMember = 1; // Set the total member count to 1 if an exception occurs during file reading
+            System.out.println("Error occurred: " + e.getMessage()); // Print an error message if an exception occurs during file reading
         }
     }
 }
