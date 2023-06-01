@@ -48,12 +48,22 @@ public class Menu extends JComponent {
     }
 
     private Icon getIcon(int index) {
-        URL url = getClass().getResource("/raven/menu/user-alt.png");
-        if (url != null) {
-            return new ImageIcon(url);
-        } else {
-            return null;// NOI18N
+        if (index == 1) {
+            URL url = getClass().getResource("/Images/user-alt.png");
+            if (url != null) {
+                return new ImageIcon(url);
+            } else {
+                return null;// NOI18N
+            }
+        } else if (index == 2) {
+            URL url = getClass().getResource("/Images/users.png");
+            if (url != null) {
+                return new ImageIcon(url);
+            } else {
+                return null;// NOI18N
+            }
         }
+        return null;
     }
 
     private void addMenu(String menuName, int index) {
@@ -83,7 +93,7 @@ public class Menu extends JComponent {
             }
         });
         item.setFocusPainted(false);
-        item.setFont(new java.awt.Font("Times New Roman", 1, 20));
+        item.setFont(new java.awt.Font("Segoe UI", 1, 20));
         add(item);
         revalidate();
         repaint();
@@ -106,7 +116,7 @@ public class Menu extends JComponent {
             });
             subItem.initSubMenu(i, length);
             subItem.setFocusPainted(false);
-            subItem.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+            subItem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             panel.add(subItem);
         }
         add(panel, "h 0!", indexZorder + 1);
