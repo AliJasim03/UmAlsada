@@ -10,15 +10,16 @@ package GUI;
  */
 public class DashBaord extends javax.swing.JPanel {
 
-   /**
+
+    AddEmployeePnl addEmployeePnl;
+    AddMemberPnl addMemberPnl;
+       /**
      * Creates a new instance of DashBaord.
      * Initializes the panel and sets up the necessary components.
      *
      * @param addEmployeePnl The panel for adding an employee.
      * @param addMemberPnl   The panel for adding a member.
      */
-    AddEmployeePnl addEmployeePnl;
-    AddMemberPnl addMemberPnl;
     public DashBaord(AddEmployeePnl addEmployeePnl,AddMemberPnl addMemberPnl) {
         initComponents();
         this.addEmployeePnl = addEmployeePnl;

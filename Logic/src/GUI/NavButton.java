@@ -86,7 +86,7 @@ public class NavButton extends JButton {
 }
  /**
      * Sets the roundness of the button's corners.
-     * @param round The roundness value for the corners.
+     * round The roundness value for the corners.
      */
     
 

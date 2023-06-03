@@ -63,7 +63,25 @@ public class Menu extends JComponent {
             } else {
                 return null;// NOI18N
             }
+            
         }
+        else if(index== 0){
+             URL url = getClass().getResource("/Images/dashboardIcon.png");
+            if (url != null) {
+                return new ImageIcon(url);
+            } else {
+                return null;// NOI18N
+            }
+        }
+        else if(index== 3){
+               URL url = getClass().getResource("/Images/note-text.png");
+            if (url != null) {
+                return new ImageIcon(url);
+            } else {
+                return null;// NOI18N
+            }
+        }
+        
         return null;
     }
 
